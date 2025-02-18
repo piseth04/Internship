@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dateOrder": {
+      "type": "date"
+    },
+    "totalAmount": {
+      "type": "decimal"
+    },
+    "country": {
+      "type": "enumeration",
+      "enum": [
+        "China",
+        "Thailand",
+        "Vietnam",
+        "Other..."
+      ]
+    },
+    "code": {
+      "type": "string"
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "orders"
+    }
+  }
+}
