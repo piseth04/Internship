@@ -67,6 +67,20 @@ export const OrderList = () => {
           </Button>
         </Space>
       </div>
+      <style>
+        {`
+          .ant-table-tbody > tr:hover > td {
+            // background-color:rgba(135, 227, 255, 0.17) !important;
+            box-shadow: 0 4px 6px -1px rgba(151, 238, 240, 0.26), 0 4px 6px -1px rgba(151, 238, 240, 0.25);
+            position: relative;
+            z-index: 1;
+            transition: all 0.2s ease;
+          }
+          .ant-table-tbody > tr > td {
+            transition: all 0.2s ease;
+          }
+        `}
+      </style>
       <Table {...tableProps} dataSource={filteredData}>
         <Table.Column 
           key="code" 

@@ -52,7 +52,7 @@ export const CustomerShow = () => {
           </Col>
           <Col xs={24} sm={12}>
             <Text strong>Created At:</Text> <br />
-            <DateField value={record?.createdAt} format="DD-MMM-YYYY HH:mm:ss" />
+            <DateField value={record?.createdAt} format="DD MMM YYYY HH:mm:ss" />
           </Col>
           <Col xs={24} sm={12}>
             <Text strong>Behavior:</Text> <br />
@@ -62,9 +62,9 @@ export const CustomerShow = () => {
             <Text strong>Order History:</Text> <br />
             {record?.orders?.map((order: { code: string; dateOrder: string; totalAmount: number }) => (
               <div key={order.code}>
-                <DateField value={order.dateOrder} format="DD-MMM-YYYY" />
+                <DateField value={order.dateOrder} format="DD MMM YYYY" />
                 <Text> Code:"{order.code}" </Text> 
-                <Text> {`${order.totalAmount}$`} </Text>
+                <Text> {`Price=${order.totalAmount}$`} </Text>
                 <br />
               </div>
             ))}

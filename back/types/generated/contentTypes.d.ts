@@ -445,6 +445,46 @@ export interface ApiEmployerEmployer extends Schema.CollectionType {
   };
 }
 
+export interface ApiIssueIssue extends Schema.CollectionType {
+  collectionName: 'issues';
+  info: {
+    description: '';
+    displayName: 'issue';
+    pluralName: 'issues';
+    singularName: 'issue';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::issue.issue',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    customer: Attribute.Relation<
+      'api::issue.issue',
+      'oneToOne',
+      'api::customer.customer'
+    >;
+    date: Attribute.Date;
+    issueType: Attribute.String;
+    publishedAt: Attribute.DateTime;
+    status: Attribute.Enumeration<
+      ['Pending...', 'Progressing', 'Completed', 'Cancel']
+    >;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::issue.issue',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNumNum extends Schema.CollectionType {
   collectionName: 'nums';
   info: {
@@ -553,6 +593,36 @@ export interface ApiProductProduct extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiServiceService extends Schema.CollectionType {
+  collectionName: 'services';
+  info: {
+    displayName: 'service';
+    pluralName: 'services';
+    singularName: 'service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    serviceType: Attribute.String;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::service.service',
       'oneToOne',
       'admin::user'
     > &
@@ -998,9 +1068,11 @@ declare module '@strapi/types' {
       'admin::user': AdminUser;
       'api::customer.customer': ApiCustomerCustomer;
       'api::employer.employer': ApiEmployerEmployer;
+      'api::issue.issue': ApiIssueIssue;
       'api::num.num': ApiNumNum;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
+      'api::service.service': ApiServiceService;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

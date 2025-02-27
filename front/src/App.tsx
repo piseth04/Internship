@@ -55,6 +55,7 @@ import {
   ShoppingCartOutlined,
   TeamOutlined,
   UserOutlined,
+  WarningOutlined,
 } from "@ant-design/icons";
 
 import { CustomerList1 } from "./pages/dashboards";
@@ -71,6 +72,10 @@ import {
   OrederEdit,
   OrderShow,
 } from "./pages/orders"
+import { 
+  IssueCreate, 
+  IssueList 
+} from "./pages/issues";
 
 function App() {
   return (
@@ -111,6 +116,14 @@ function App() {
                     edit: "orders/edit/:id",
                     meta:{
                       icon: <ShoppingCartOutlined/>
+                    }
+                  },
+                  {
+                    name: "issues",
+                    list: "issues",
+                    create: "issues/create",
+                    meta: {
+                      icon: <WarningOutlined />
                     }
                   },
                   {
@@ -184,6 +197,12 @@ function App() {
                       <Route path="create" element={<OrderCreate />} />
                       <Route path="edit/:id" element={<OrederEdit />} />
                       <Route path="show/:id" element={<OrderShow />} />
+                    </Route>
+
+                    <Route path="/issues">
+                      <Route index element={<IssueList />} />
+                      <Route path="create" element={<IssueCreate />} />
+                      {/* <Route path="show/:id" element={<CustomerShow />} /> */}
                     </Route>
 
                     <Route path="/products">

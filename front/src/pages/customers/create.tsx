@@ -1,4 +1,4 @@
-import { Create, useForm, useSelect } from "@refinedev/antd";
+import { Create, useForm } from "@refinedev/antd";
 import { AutoComplete, Col, DatePicker, Form, Input, Row, Select } from "antd";
 import React from "react";
 
@@ -106,7 +106,7 @@ export const CustomerCreate = () => {
               {/* You can replace Input with DatePicker if desired */}
               {/* <Input placeholder="YYYY-MM-DD" /> */}
                 <DatePicker 
-                  format="YYYY-MM-DD" 
+                  format="DD-MM-YYYY" 
                   placeholder="Select date" 
                   style={{ width: "100%" }} 
                 />
